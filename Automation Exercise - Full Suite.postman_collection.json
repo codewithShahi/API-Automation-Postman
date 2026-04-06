@@ -1,0 +1,947 @@
+{
+  "info": {
+    "_postman_id": "8e6af924-1265-4f11-8d4e-50f1b582a228",
+    "name": "Automation Exercise - Full Suite",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48401409"
+  },
+  "item": [
+    {
+      "name": "API 1 - Get All Products List",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response contains products list\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.products).to.be.an('array');\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response code in body is 200\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/productsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "productsList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API 2 - POST To All Products List (Negative)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Response code is 405\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(405);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify unsupported method message\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.message).to.eql(\"This request method is not supported.\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/productsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "productsList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API 3 - Get All Brands List",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response contains brands list\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.brands).to.be.an('array');\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response code in body is 200\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/brandsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "brandsList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API 4 - PUT To All Brands List (Negative)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Response code is 405\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(405);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify unsupported method message\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.message).to.eql(\"This request method is not supported.\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/brandsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "brandsList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API 5 - POST To Search Product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Response code is 200\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Products list is returned\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.products).to.be.an('array');\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Search result is not empty\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.products.length).to.be.above(0);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "search_product",
+              "value": "jean",
+              "type": "text",
+              "uuid": "581f15d0-52f1-446f-9687-eb790244efb7"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/searchProduct",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "searchProduct"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API 6 - POST Search Product (Negative)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Response code is 400\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(400);\r",
+              "});\r",
+              "pm.test(\"Verify missing parameter message\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.message).to.eql(\"Bad request, search_product parameter is missing in POST request.\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/searchProduct",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "searchProduct"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API 7 - POST Verify Login (User Not Found)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Verify error message for invalid user\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.message).to.eql(\"User not found!\");\r",
+              "});\r",
+              "pm.test(\"Response code is 404\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(404);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "shahzar@test.com",
+              "type": "text",
+              "uuid": "99d80329-bb91-4e7d-9ee1-3b2a348717c3"
+            },
+            {
+              "key": "password",
+              "value": "test1234",
+              "type": "text",
+              "uuid": "c2ac2176-1ee8-4bf1-a9f7-511601cbf248"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API 8 - POST Verify Login (Missing Email)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Verify missing email error\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.message).to.eql(\"Bad request, email or password parameter is missing in POST request.\");\r",
+              "});\r",
+              "pm.test(\"Response code should be 400\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(400);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "password",
+              "value": "test1234",
+              "type": "text",
+              "uuid": "33df68f0-cc0e-4014-8eb6-a203f741cdf5"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API 9 - DELETE To Verify Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Response code is 405\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(405);\r",
+              "});\r",
+              "pm.test(\"Verify method not supported message\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.message).to.eql(\"This request method is not supported.\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API 10 - POST Verify Login (Invalid Details)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Verify invalid user error message\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.message).to.eql(\"User not found!\");\r",
+              "});\r",
+              "pm.test(\"Response code should be 404\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(404);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "userwrong@hotmail.com",
+              "type": "text",
+              "uuid": "c016b839-d7b8-4fb5-b1fb-9180d2a96383"
+            },
+            {
+              "key": "password",
+              "value": "passwrong123",
+              "type": "text",
+              "uuid": "53251bb4-b605-4a42-a732-c509825378cd"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API 11 - POST Create Account",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Verify user created message\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.message).to.eql(\"User created!\");\r",
+              "});\r",
+              "pm.test(\"Response code should be 201\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(201);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "Shahzar Ahmad",
+              "type": "text",
+              "uuid": "0dfeacdf-f099-427b-a2ff-b8facac3a919"
+            },
+            {
+              "key": "email",
+              "value": "shahzar.ahmad{{$randomInt}}@hotmail.com",
+              "type": "text",
+              "uuid": "9c4c85e0-ff27-47d5-a226-df2aba06615a"
+            },
+            {
+              "key": "password",
+              "value": "testmail1234",
+              "type": "text",
+              "uuid": "af04c113-1179-4ba1-bdd1-e689122fb922"
+            },
+            {
+              "key": "title",
+              "value": "Mr",
+              "type": "text",
+              "uuid": "170b9b4e-ac8d-44c6-ae9a-d8ee64824b3d"
+            },
+            {
+              "key": "birth_date",
+              "value": "28",
+              "type": "text",
+              "uuid": "504e6dc4-2866-44fe-84b5-21d4b361ceb7"
+            },
+            {
+              "key": "birth_month",
+              "value": "03",
+              "type": "text",
+              "uuid": "85b651c3-da1e-43b7-b8de-9e2f5e0bd47c"
+            },
+            {
+              "key": "birth_year",
+              "value": "1999",
+              "type": "text",
+              "uuid": "a940b92a-4c2f-4ea0-8802-6e12a2aa1362"
+            },
+            {
+              "key": "firstname",
+              "value": "Shahzar",
+              "type": "text",
+              "uuid": "c942f1e7-791d-40f8-ad2c-93adb8786012"
+            },
+            {
+              "key": "lastname",
+              "value": "Ahmad",
+              "type": "text",
+              "uuid": "85e7c0f4-d171-4eed-9139-f346768699e6"
+            },
+            {
+              "key": "city",
+              "value": "Berlin",
+              "type": "text",
+              "uuid": "efc40949-bfcc-43cd-a7a3-08a0f2ba6cd8"
+            },
+            {
+              "key": "company",
+              "value": "Evaan Solutions",
+              "type": "text",
+              "uuid": "5acb316f-e5c6-4e6c-b369-a58d0d54aa60"
+            },
+            {
+              "key": "address1",
+              "value": "Street 2",
+              "type": "text",
+              "uuid": "eaeb3dbe-5abd-4fcb-a9ee-f7422d969ed2"
+            },
+            {
+              "key": "address2",
+              "value": "Main Market",
+              "type": "text",
+              "uuid": "3e59edde-bd9c-4370-bdb6-0070d07de8df"
+            },
+            {
+              "key": "country",
+              "value": "Germany",
+              "type": "text",
+              "uuid": "d2438eb4-2b5d-4860-86de-e218814e3094"
+            },
+            {
+              "key": "zipcode",
+              "value": "10115",
+              "type": "text",
+              "uuid": "9f4b6722-9899-433e-bcdc-640f0ecea231"
+            },
+            {
+              "key": "state",
+              "value": "Germnay",
+              "type": "text",
+              "uuid": "d8642585-09dc-4944-9a1e-4ed63c8d1473"
+            },
+            {
+              "key": "mobile_number",
+              "value": "03045698760",
+              "type": "text",
+              "uuid": "30dedd1b-5f6e-46d1-ae0a-2df53e076f9e"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/createAccount",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "createAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API 12 - DELETE To Delete Account (Negative)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Response code is 400\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(400);\r",
+              "});\r",
+              "pm.test(\"Verify missing email parameter message\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.message).to.eql(\"Bad request, email parameter is missing in DELETE request.\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/deleteAccount",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "deleteAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API 13 - PUT To Update User Account",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Response code is 200\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify user updated message\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.message).to.eql(\"User updated!\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "Shahzar Ahmad",
+              "type": "text",
+              "uuid": "0dfeacdf-f099-427b-a2ff-b8facac3a919"
+            },
+            {
+              "key": "email",
+              "value": "shahzartestmail@hotmail.com",
+              "type": "text",
+              "uuid": "9c4c85e0-ff27-47d5-a226-df2aba06615a"
+            },
+            {
+              "key": "password",
+              "value": "testmail1234",
+              "type": "text",
+              "uuid": "af04c113-1179-4ba1-bdd1-e689122fb922"
+            },
+            {
+              "key": "title",
+              "value": "Mr",
+              "type": "text",
+              "uuid": "170b9b4e-ac8d-44c6-ae9a-d8ee64824b3d"
+            },
+            {
+              "key": "birth_date",
+              "value": "28",
+              "type": "text",
+              "uuid": "504e6dc4-2866-44fe-84b5-21d4b361ceb7"
+            },
+            {
+              "key": "birth_month",
+              "value": "03",
+              "type": "text",
+              "uuid": "85b651c3-da1e-43b7-b8de-9e2f5e0bd47c"
+            },
+            {
+              "key": "birth_year",
+              "value": "1999",
+              "type": "text",
+              "uuid": "a940b92a-4c2f-4ea0-8802-6e12a2aa1362"
+            },
+            {
+              "key": "firstname",
+              "value": "Shahzar",
+              "type": "text",
+              "uuid": "c942f1e7-791d-40f8-ad2c-93adb8786012"
+            },
+            {
+              "key": "lastname",
+              "value": "Ahmad",
+              "type": "text",
+              "uuid": "85e7c0f4-d171-4eed-9139-f346768699e6"
+            },
+            {
+              "key": "city",
+              "value": "Berlin",
+              "type": "text",
+              "uuid": "efc40949-bfcc-43cd-a7a3-08a0f2ba6cd8"
+            },
+            {
+              "key": "company",
+              "value": "Monal Solutions",
+              "type": "text",
+              "uuid": "5acb316f-e5c6-4e6c-b369-a58d0d54aa60"
+            },
+            {
+              "key": "address1",
+              "value": "Street 23 B",
+              "type": "text",
+              "uuid": "eaeb3dbe-5abd-4fcb-a9ee-f7422d969ed2"
+            },
+            {
+              "key": "address2",
+              "value": "Main Market",
+              "type": "text",
+              "uuid": "3e59edde-bd9c-4370-bdb6-0070d07de8df"
+            },
+            {
+              "key": "country",
+              "value": "Germany",
+              "type": "text",
+              "uuid": "d2438eb4-2b5d-4860-86de-e218814e3094"
+            },
+            {
+              "key": "zipcode",
+              "value": "10115",
+              "type": "text",
+              "uuid": "9f4b6722-9899-433e-bcdc-640f0ecea231"
+            },
+            {
+              "key": "state",
+              "value": "Germnay",
+              "type": "text",
+              "uuid": "d8642585-09dc-4944-9a1e-4ed63c8d1473"
+            },
+            {
+              "key": "mobile_number",
+              "value": "03045698760",
+              "type": "text",
+              "uuid": "30dedd1b-5f6e-46d1-ae0a-2df53e076f9e"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/updateAccount",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "updateAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API 14 - GET User Detail By Email",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Response code is 200\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(200);\r",
+              "});\r",
+              "pm.test(\"User details are returned\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.user).to.be.an('object');\r",
+              "});\r",
+              "pm.test(\"Verify updated country is Germany\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.user.country).to.eql(\"Germany\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "shahzartestmail@hotmail.com",
+              "type": "text",
+              "uuid": "a3065770-adb5-4d4e-88d6-946196dfb732",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/getUserDetailByEmail?email=shahzartestmail@hotmail.com",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "getUserDetailByEmail"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "shahzartestmail@hotmail.com",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
